@@ -1,0 +1,169 @@
+int main() 
+{
+	int g;
+	cout<<"Program pozwalajacy na zapisywanie i udostepnianie danych o dzialalnosci firmy produkcyjnej. \nAutorzy: Skonieczny Grzegorz, Tomala Anna."<<endl;
+	string zgoda1;
+	do
+	{
+	cout<<"____________________________"<<endl;
+	cout<<"       [Menu glowne]        "<<endl;
+	cout<<"1 - Dodaj obiekt."<<endl;
+	cout<<"2 - Wyswietl obiekt."<<endl;
+	cout<<"3 - Kasuj obiekt"<<endl;
+	cout<<"0 - Koniec programu"<<endl;
+	cout<<"____________________________"<<endl;
+	int u;
+	cout<<"Wybierz:"<<endl;
+	cin>>u;
+	switch(u)
+	{
+		case 1:
+			{
+				string zgoda;
+				string nazwa;
+				int i;
+				do
+				{
+				cout<<"____________________________"<<endl;
+				cout<<"    [DODAWANIE OBIEKTU]"<<endl;
+				cout<<"1 - Dodaj zaklad."<<endl;
+				cout<<"2 - Dodaj maszyne."<<endl;
+				cout<<"3 - Dodaj oprzyrzadowanie."<<endl;
+				cout<<"____________________________"<<endl;
+				
+					cout<<"Wybierz:"<<endl;
+					cin>>i;
+					switch(i)
+					{
+						case 1:
+						{
+							cout<<"Podaj nazwe zakladu:"<<endl;
+							cin>>nazwa; 
+							tab_zaklad[licznik_zaklad] = new CZaklad();
+							cout<<"Dodano zaklad:"<<licznik_zaklad<<nazwa<<endl;
+							tab_zaklad[licznik_zaklad]->dodaj_nazwa_zaklad(nazwa);
+							licznik_zaklad ++;
+							break;
+						}
+						case 2:
+						{
+							cout<<"Podaj nazwe/rodzaj maszyny:"<<endl;
+							break;
+						}
+						case 3:
+						{
+							cout<<"Podaj nazwe/rodzaj maszyny:"<<endl;
+							break;
+						}
+							default:
+							break;
+					}
+					cout<< "Czy chcesz dodac kolejny obiekt? \nTak/Nie."<<endl;
+					cin>>zgoda;
+					
+							}while(zgoda == "Tak");
+							break;
+				
+			}
+		case 2:
+			{
+				string zgoda;
+				int i;
+				do
+				{
+				cout<<"____________________________"<<endl;
+				cout<<"  [WYSWIETLANIE OBIEKTU]"<<endl;
+				cout<<"1 - Wyswietl zaklad."<<endl;
+				cout<<"2 - Wyswietl maszyne."<<endl;
+				cout<<"3 - Wyswietl oprzyrzadowanie."<<endl;
+				cout<<"____________________________"<<endl;
+					cout<<"Wybierz:"<<endl;
+					cin>>i;
+					switch(i)
+					{
+						case 1:
+						{
+							cout<<"Dane zakladu:"<<endl;
+							for (int i = 0; i<licznik_zaklad; i++)							
+							{
+								cout<<tab_zaklad[i]->wyswietl_nazwa_zaklad()<<":"<<endl;
+							}
+							break;
+						}
+						case 2:
+						{	
+							cout<<"Maszyna"<<endl;
+							break;
+						}
+						case 3:
+						{
+							cout<<"Oprzyrzadowanie"<<endl;
+							break;
+						}	
+							default:
+							break;	
+					}
+					cout<<"Czy chcesz wyswietlic cos jeszcze? \nTak/Nie"<<endl;
+					cin>>zgoda;
+				}while(zgoda == "Tak");
+				break;
+			}
+		case 3:
+			{
+				string zgoda;
+				int i;
+				do
+				{
+				cout<<"____________________________"<<endl;
+				cout<<"    [USUWANIE OBIEKTOW]"<<endl;
+				cout<<"1 - Usun zaklad."<<endl;
+				cout<<"2 - Usun maszyne."<<endl;
+				cout<<"3 - Usun oprzyrzadowanie."<<endl;
+				cout<<"____________________________"<<endl;
+					cout<<"Wybierz:"<<endl;
+					cin>>i;
+					switch(i)
+					{
+						case 1:
+						{
+							cout<<"Usuwanie zakladu:"<<endl;
+							for (int i = 0; i<licznik_zaklad; i++)
+							{
+								cout <<i<<":"<< tab_zaklad[i]->wyswietl_nazwa_zaklad()<< endl;
+							}
+							cout <<"Ktory zaklad chcesz usunac?(Nr)"<<endl;
+							cin >> g;
+							delete tab_zaklad[g];
+							for(int i = g;i<licznik_zaklad;i++)
+							{
+								tab_zaklad[i]=tab_zaklad[i+1];
+							}
+							licznik_zaklad--;
+							cout<<"Pomyslnie usunieto wybrany zaklad."<<endl;
+							break;
+						}
+						case 2:
+						{	
+							cout<<"Maszyna"<<endl;
+							break;
+						}
+						case 3:
+						{
+							cout<<"Oprzyrzadowanie"<<endl;
+							break;
+						}	
+							default:
+							break;
+					}
+					cout<<"Czy chcesz usunac cos jeszcze? \nTak/Nie"<<endl;
+					cin>>zgoda;
+				}while(zgoda == "Tak");
+				break;
+			}	
+	}
+	cout<<"Wrocic do menu glownego? \nTak/Nie"<<endl;
+	cin>>zgoda1;
+	}while (zgoda1 == "Tak");
+	
+return 0;
+}
